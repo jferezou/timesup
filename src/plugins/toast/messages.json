@@ -1,0 +1,21 @@
+{
+  "success": {
+    "post": {
+      "defaultTitle": "Enregistrement effectué."
+    },
+    "put": {
+      "defaultTitle": "Mise à jour effectuée."
+    },
+    "delete": {
+      "defaultTitle": "Suppression effectuée."
+    }
+  },
+  "failure": {
+    "post": {
+      "defaultTitle": "Enregistrement impossible."
+    },
+    "put": {
+      "defaultTitle": "Mise à jour impossible."
+    }
+  }
+}
