@@ -1,5 +1,5 @@
-import authenticationApi from "./authentication";
+import timesupApi from "./timesup";
 
 export default {
-  authentication: authenticationApi()
+  timesup: timesupApi()
 };

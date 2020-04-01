@@ -40,10 +40,18 @@
                     commun: [
                         {
                             id: 0,
-                            title: "Upload",
+                            title: " 1 - Ajouter un nom",
                             icon: "$vuetify.icons.concept.societe",
                             route: {
-                                name: "upload"
+                                name: "addNewName"
+                            }
+                        },
+                        {
+                            id: 1,
+                            title: " 2 - Faire deviner",
+                            icon: "$vuetify.icons.concept.societe",
+                            route: {
+                                name: "new-round"
                             }
                         }
                     ]

@@ -1,7 +1,6 @@
 import {TOAST} from "@/plugins/toast/definition";
 import Utils from "@/utils.js";
 import httpStatusText from "./httpStatusText";
-import authService from '@/services/authService.js';
 
 const ERROR_TITLE = "Une erreur est survenue";
 
@@ -14,7 +13,6 @@ export default function displayError(error) {
       errorMessage = "Erreur inattendue";
     } else if (status === 401) {
       console.error("Authentification requise : " + error.response.data.message);
-      authService.logout();
       if (error.response.data) {
         if (error.response.data.type === "ExpiredRefreshError" || error.response.data.type === "ExpiredAccessError") {
           errorMessage = "La session a expiré, veuillez vous reconnecter.";

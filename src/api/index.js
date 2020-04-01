@@ -1,7 +1,6 @@
 import axios from "axios";
 import _ from "lodash";
 import errorHandler from "./errorHandler";
-import authService from '../services/authService.js';
 import warnHandler from "./warnHandler";
 
 const BASE_URL = process.env.VUE_APP_API_URL;
@@ -85,14 +84,7 @@ function apiPost(path, body, queryParams, headers, useToken) {
 }
 
 function extracted(token, headers, verb, baseUrl, path, queryParams, body) {
-  if (!_.isEmpty(token)) {
-    headers = _.merge(
-      {
-        "Authorization": "Bearer " + token
-      },
-      headers
-    );
-  }
+
   const config = {
     method: verb,
     baseURL: baseUrl,
@@ -101,6 +93,7 @@ function extracted(token, headers, verb, baseUrl, path, queryParams, body) {
     headers: headers,
     data: body
   };
+
   return axios
     .request(config)
     .then(resolve => {
@@ -139,23 +132,7 @@ function request(verb, baseUrl, path, queryParams, body, headers, useToken, useT
       headers
     );
   }
-  // on gère le token pour l'authorisation si necessaire
-  let token = null;
-  if (useToken) {
-    if (useTokenWithoutRefresh) {
-      token = authService.getTokenWithoutRefresh();
-      return extracted(token, headers, verb, baseUrl, path, queryParams, body);
-    } else {
-      let myNewPromise = new Promise(function (resolve, reject) {
-        authService.getValidToken().then(token => {
-          return resolve(extracted(token, headers, verb, baseUrl, path, queryParams, body));
-        });
-      });
-      return myNewPromise;
-    }
-  } else {
-    return extracted(null, headers, verb, baseUrl, path, queryParams, body);
-  }
+  return extracted(null, headers, verb, baseUrl, path, queryParams, body);
 }
 
 

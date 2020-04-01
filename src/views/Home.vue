@@ -3,7 +3,7 @@
         <v-layout align-center justify-space-between column fill-height>
             <v-flex xs2></v-flex>
             <v-flex mt-5 align-self-center xs5>
-                <span class="display-2">Bienvenue sur l'application Photos</span>
+                <span class="display-2">Bienvenue sur l'application TimesUp</span>
             </v-flex>
         </v-layout>
     </div>
